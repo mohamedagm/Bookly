@@ -1,5 +1,7 @@
 import 'package:bookly/core/utils/assets_data.dart';
+import 'package:bookly/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -28,7 +30,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
       end: Offset.zero,
     ).animate(animationController);
     animationController.forward();
-
+    Future.delayed(Duration(seconds: 4), () {
+      Get.to(
+        () => HomeView(),
+        transition: Transition.cupertino,
+        duration: Duration(seconds: 4),
+      );
+    });
     super.initState();
   }
 
@@ -68,6 +76,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       ],
     );
   }
+
   @override
   void dispose() {
     animationController.dispose();
