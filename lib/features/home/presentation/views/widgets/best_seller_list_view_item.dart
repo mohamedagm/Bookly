@@ -8,32 +8,35 @@ class BestSellerListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(height: 130, child: HorizontalCard()),
-        SizedBox(width: 30),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Harry Potter and the Goblet of Fire',
-                style: Styles.style20,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Text(
-                'J.K. Rowling',
-                style: Styles.themeStyle.copyWith(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: Row(
+        children: [
+          SizedBox(height: 130, child: HorizontalCard()),
+          SizedBox(width: 30),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Harry Potter and the Goblet of Fire',
+                  style: Styles.style20,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              BestSellerRating(),
-            ],
+                Text(
+                  'J.K. Rowling',
+                  style: Styles.themeStyle.copyWith(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                  ),
+                ),
+                BestSellerRating(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
