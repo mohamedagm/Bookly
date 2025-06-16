@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract class Styles {
-  static const mediumTitle = TextStyle(
+  static const themeStyle = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
   );
+  static final style20 = GoogleFonts.caprasimo(fontSize: 20);
 }
