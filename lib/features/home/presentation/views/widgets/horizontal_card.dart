@@ -8,7 +8,7 @@ class HorizontalCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 2.7 / 4,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.only(right: 8.0),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
