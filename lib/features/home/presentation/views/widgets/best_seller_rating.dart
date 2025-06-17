@@ -8,16 +8,9 @@ class BestSellerRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          '19.99 €',
-          style: Styles.themeStyle.copyWith(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-        Spacer(),
-        Icon(FontAwesomeIcons.solidStar, color: Color(0xffFFDD4F)),
+        Icon(FontAwesomeIcons.solidStar, color: Color(0xffFFDD4F), size: 20),
         SizedBox(width: 6.3),
         Text(
           '4.6',

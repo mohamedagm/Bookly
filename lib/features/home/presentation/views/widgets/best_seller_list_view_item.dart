@@ -36,7 +36,19 @@ class BestSellerListViewItem extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  BestSellerRating(),
+                  Row(
+                    children: [
+                      Text(
+                        '19.99 €',
+                        style: Styles.themeStyle.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Spacer(),
+                      BestSellerRating(),
+                    ],
+                  ),
                 ],
               ),
             ),
