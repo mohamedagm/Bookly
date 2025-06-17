@@ -42,7 +42,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   BestSellerRating(),
                   SizedBox(height: 37),
                   BookActions(),
-                  SizedBox(height: 47),
+                  Expanded(child: SizedBox(height: 47)),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
