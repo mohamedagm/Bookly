@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HorizontalCard extends StatelessWidget {
-  const HorizontalCard({super.key});
+class CustomBookCard extends StatelessWidget {
+  const CustomBookCard({super.key});
 
   @override
   Widget build(BuildContext context) {

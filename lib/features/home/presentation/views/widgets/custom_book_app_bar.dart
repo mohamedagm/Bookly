@@ -8,10 +8,19 @@ class CustomBookAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.close, size: 24)),
+        IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.close, size: 30, color: Colors.white),
+        ),
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.shopping_cart_outlined, size: 24),
+          icon: Icon(
+            Icons.shopping_cart_outlined,
+            size: 30,
+            color: Colors.white,
+          ),
         ),
       ],
     );

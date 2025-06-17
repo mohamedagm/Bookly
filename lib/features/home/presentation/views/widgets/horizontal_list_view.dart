@@ -1,4 +1,4 @@
-import 'package:bookly/features/home/presentation/views/widgets/horizontal_card.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_card.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalListView extends StatelessWidget {
@@ -11,7 +11,7 @@ class HorizontalListView extends StatelessWidget {
       child: ListView.builder(
         itemCount: 6,
         itemBuilder: (context, index) {
-          return HorizontalCard();
+          return CustomBookCard();
         },
         scrollDirection: Axis.horizontal,
       ),

@@ -1,6 +1,6 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/presentation/views/widgets/best_seller_rating.dart';
-import 'package:bookly/features/home/presentation/views/widgets/horizontal_card.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,7 +17,7 @@ class BestSellerListViewItem extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 20.0),
         child: Row(
           children: [
-            SizedBox(height: 130, child: HorizontalCard()),
+            SizedBox(height: 130, child: CustomBookCard()),
             SizedBox(width: 30),
             Expanded(
               child: Column(
