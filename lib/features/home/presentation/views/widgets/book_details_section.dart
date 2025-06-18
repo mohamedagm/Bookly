@@ -1,4 +1,3 @@
-
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/presentation/views/widgets/best_seller_rating.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_actions.dart';
