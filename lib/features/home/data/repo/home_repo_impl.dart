@@ -20,13 +20,15 @@ class HomeRepoImpl implements HomeRepo {
       }
       return right(books);
     } catch (e) {
-      return left(FailuresTest());
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 
   @override
   Future<Either<Failures, List<BookModel>>> fetchHorizontalListViewBooks() {
-    // TODO: implement fetchHorizontalListViewBooks
     throw UnimplementedError();
   }
 }
