@@ -1,4 +1,4 @@
-import 'package:bookly/features/home/presentation/views/widgets/custom_book_card.dart';
+import 'package:bookly/features/home/presentation/views/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
 
 class SuggestedListView extends StatelessWidget {
@@ -11,7 +11,7 @@ class SuggestedListView extends StatelessWidget {
       child: ListView.builder(
         itemCount: 6,
         itemBuilder: (context, index) {
-          return CustomBookCard();
+          return BookImageCard();
         },
         scrollDirection: Axis.horizontal,
       ),

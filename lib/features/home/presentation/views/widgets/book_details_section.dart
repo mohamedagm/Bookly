@@ -1,7 +1,7 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/home/presentation/views/widgets/best_seller_rating.dart';
+import 'package:bookly/features/home/presentation/views/widgets/books_rating.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_actions.dart';
-import 'package:bookly/features/home/presentation/views/widgets/custom_book_card.dart';
+import 'package:bookly/features/home/presentation/views/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
@@ -13,7 +13,7 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.width * 0.65,
-          child: CustomBookCard(),
+          child: BookImageCard(),
         ),
         SizedBox(height: 40),
         Text(
@@ -24,7 +24,7 @@ class BookDetailsSection extends StatelessWidget {
           'Rudyard Kipling',
           style: Styles.themeStyle.copyWith(fontWeight: FontWeight.w400),
         ),
-        BestSellerRating(),
+        BooksRating(),
         SizedBox(height: 37),
         BookActions(),
       ],

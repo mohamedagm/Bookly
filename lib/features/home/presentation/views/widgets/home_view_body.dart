@@ -1,6 +1,6 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/home/presentation/views/widgets/best_seller_list_view.dart';
-import 'package:bookly/features/home/presentation/views/widgets/horizontal_list_view.dart';
+import 'package:bookly/features/home/presentation/views/widgets/newest_books_list_view.dart';
+import 'package:bookly/features/home/presentation/views/widgets/featured_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_app_bar.dart';
 
@@ -18,14 +18,14 @@ class HomeViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomAppBar(),
-                HorizontalListView(),
+                FeaturedBooksListView(),
                 SizedBox(height: 50),
-                Text('Best Seller', style: Styles.themeStyle),
+                Text('Newest Books', style: Styles.themeStyle),
                 SizedBox(height: 20),
               ],
             ),
           ),
-          SliverFillRemaining(child: BestSellerListView()),
+          SliverFillRemaining(child: NewestBooksListView()),
         ],
       ),
     );

@@ -8,7 +8,7 @@ import 'package:dio/dio.dart';
 class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failures, List<BookModel>>> //return newest not best seller ok.
-  fetchBestSellerListViewBooks() async {
+  fetchNewestBooks() async {
     try {
       Map<String, dynamic> data = await ApiService(Dio()).getBooks(
         endPoint:
@@ -28,8 +28,7 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failures, List<BookModel>>>
-  fetchHorizontalListViewBooks() async {
+  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       Map<String, dynamic> data = await ApiService(Dio()).getBooks(
         endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming',

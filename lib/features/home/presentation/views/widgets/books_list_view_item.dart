@@ -1,11 +1,11 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/home/presentation/views/widgets/best_seller_rating.dart';
-import 'package:bookly/features/home/presentation/views/widgets/custom_book_card.dart';
+import 'package:bookly/features/home/presentation/views/widgets/books_rating.dart';
+import 'package:bookly/features/home/presentation/views/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+class BooksListViewItem extends StatelessWidget {
+  const BooksListViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,10 @@ class BookListViewItem extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 20.0),
         child: Row(
           children: [
-            SizedBox(height: 130, child: CustomBookCard()),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.14,
+              child: BookImageCard(),
+            ),
             SizedBox(width: 30),
             Expanded(
               child: Column(
@@ -46,7 +49,7 @@ class BookListViewItem extends StatelessWidget {
                         ),
                       ),
                       Spacer(),
-                      BestSellerRating(),
+                      BooksRating(),
                     ],
                   ),
                 ],
