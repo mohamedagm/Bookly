@@ -6,11 +6,14 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
+  final ApiService apiService;
+
+  HomeRepoImpl(this.apiService);
   @override
   Future<Either<Failures, List<BookModel>>> //return newest not best seller ok.
   fetchNewestBooks() async {
     try {
-      Map<String, dynamic> data = await ApiService(Dio()).getBooks(
+      Map<String, dynamic> data = await apiService.getBooks(
         endPoint:
             'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest',
       );
@@ -30,7 +33,7 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      Map<String, dynamic> data = await ApiService(Dio()).getBooks(
+      Map<String, dynamic> data = await apiService.getBooks(
         endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming',
       );
       List<BookModel> books = [];
