@@ -15,11 +15,16 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.26,
             child: ListView.builder(
-              itemCount: 6,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return BookImageCard();
+                return BookImageCard(
+                  imageLink:
+                      state.books[index].volumeInfo!.imageLinks!.thumbnail ??
+                      'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
+                );
               },
               scrollDirection: Axis.horizontal,
+              physics: BouncingScrollPhysics(),
             ),
           );
         } else if (state is FeaturedBooksFailure) {

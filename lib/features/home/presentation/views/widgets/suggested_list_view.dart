@@ -11,7 +11,7 @@ class SuggestedListView extends StatelessWidget {
       child: ListView.builder(
         itemCount: 6,
         itemBuilder: (context, index) {
-          return BookImageCard();
+          return BookImageCard(imageLink: '');
         },
         scrollDirection: Axis.horizontal,
       ),

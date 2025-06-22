@@ -19,7 +19,7 @@ class BooksListViewItem extends StatelessWidget {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.14,
-              child: BookImageCard(),
+              child: BookImageCard(imageLink: '',),
             ),
             SizedBox(width: 30),
             Expanded(
