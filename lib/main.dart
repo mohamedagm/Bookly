@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  SetupServiceLocator().setupServiceLocator();
   runApp(const Bookly());
 }
 
@@ -22,14 +23,14 @@ class Bookly extends StatelessWidget {
         // طبعا عملنا كدا عشان دي الهوم فطبيعي تبقي متوفره دايما
         BlocProvider(
           create:
-              (context) => FeaturedBooksCubit(
-                getIt<HomeRepoImpl>()..fetchFeaturedBooks(),
-              ),
+              (context) =>
+                  FeaturedBooksCubit(getIt<HomeRepoImpl>())
+                    ..fetchFeaturedBooksC(),
         ),
         BlocProvider(
           create:
               (context) =>
-                  NewestBooksCubit(getIt<HomeRepoImpl>()..fetchNewestBooks()),
+                  NewestBooksCubit(getIt<HomeRepoImpl>())..fetchNewestBooksC(),
         ),
       ],
       child: MaterialApp.router(
