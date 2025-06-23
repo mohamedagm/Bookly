@@ -1,12 +1,13 @@
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/books_rating.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BooksListViewItem extends StatelessWidget {
-  const BooksListViewItem({super.key});
-
+  const BooksListViewItem({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,7 +20,9 @@ class BooksListViewItem extends StatelessWidget {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.14,
-              child: BookImageCard(imageLink: '',),
+              child: BookImageCard(
+                imageLink: bookModel.volumeInfo!.imageLinks!.thumbnail!,
+              ),
             ),
             SizedBox(width: 30),
             Expanded(
@@ -27,13 +30,13 @@ class BooksListViewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Harry Potter and the Goblet of Fire',
+                    bookModel.volumeInfo!.title!,
                     style: Styles.style20,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    'J.K. Rowling',
+                    bookModel.volumeInfo!.authors![0],
                     style: Styles.themeStyle.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -42,14 +45,17 @@ class BooksListViewItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: Styles.themeStyle.copyWith(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
                       Spacer(),
-                      BooksRating(),
+                      BooksRating(
+                        rating: 4.8,
+                        count: bookModel.volumeInfo!.pageCount!,
+                      ),
                     ],
                   ),
                 ],

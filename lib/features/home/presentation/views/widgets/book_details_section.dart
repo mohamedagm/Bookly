@@ -13,7 +13,7 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.width * 0.65,
-          child: BookImageCard(imageLink: '',),
+          child: BookImageCard(imageLink: ''),
         ),
         SizedBox(height: 40),
         Text(
@@ -24,7 +24,7 @@ class BookDetailsSection extends StatelessWidget {
           'Rudyard Kipling',
           style: Styles.themeStyle.copyWith(fontWeight: FontWeight.w400),
         ),
-        BooksRating(),
+        BooksRating(rating: 4, count: 4),
         SizedBox(height: 37),
         BookActions(),
       ],

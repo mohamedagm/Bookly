@@ -11,18 +11,15 @@ class BookImageCard extends StatelessWidget {
       aspectRatio: 2.7 / 4,
       child: Padding(
         padding: const EdgeInsets.only(right: 8.0),
+        // مش لازمه هنا هااا يدوبك دي هنا عشان البوردر
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: CachedNetworkImage(
             imageUrl: imageLink,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
             placeholder:
-                (context, url) => Container(
-                  color: Colors.grey.shade200,
-                  child: const Center(
-                    child: Icon(Icons.image, size: 40, color: Colors.grey),
-                  ),
-                ),
+                (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
             errorWidget:
                 (context, url, error) => const Icon(Icons.broken_image),
           ),
