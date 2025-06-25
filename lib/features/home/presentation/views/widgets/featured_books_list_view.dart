@@ -4,6 +4,7 @@ import 'package:bookly/features/home/presentation/Manager/FeaturedBooks/featured
 import 'package:bookly/features/home/presentation/views/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
@@ -17,10 +18,17 @@ class FeaturedBooksListView extends StatelessWidget {
             child: ListView.builder(
               itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return BookImageCard(
-                  imageLink:
-                      state.books[index].volumeInfo!.imageLinks!.thumbnail ??
-                      'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
+                return GestureDetector(
+                  onTap: () {
+                    GoRouter.of(
+                      context,
+                    ).push('/bookDetailsView', extra: state.books[index]);
+                  },
+                  child: BookImageCard(
+                    imageLink:
+                        state.books[index].volumeInfo!.imageLinks!.thumbnail ??
+                        'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
+                  ),
                 );
               },
               scrollDirection: Axis.horizontal,

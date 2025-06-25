@@ -16,7 +16,8 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
         emit(SimilarBooksFailure(failure.errMessage));
       },
       (books) {
-        emit(SimilarBooksSuccess(books));
+        // سبحان من خلاني المحها اشعر باينشتاين التستات جوايا نااااااو
+        if (!isClosed) emit(SimilarBooksSuccess(books));
       },
     );
   }

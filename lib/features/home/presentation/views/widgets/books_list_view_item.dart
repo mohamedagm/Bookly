@@ -36,7 +36,7 @@ class BooksListViewItem extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    bookModel.volumeInfo!.authors![0],
+                    bookModel.volumeInfo!.authors?[0] ?? 'Unknown Author',
                     style: Styles.themeStyle.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -53,8 +53,8 @@ class BooksListViewItem extends StatelessWidget {
                       ),
                       Spacer(),
                       BooksRating(
-                        rating: 4.8,
-                        count: bookModel.volumeInfo!.pageCount!,
+                        rating: bookModel.volumeInfo!.averageRating ?? 0,
+                        count: bookModel.volumeInfo!.ratingsCount ?? 0,
                       ),
                     ],
                   ),

@@ -4,6 +4,7 @@ import 'package:bookly/features/home/presentation/Manager/SimilarBooks/similar_b
 import 'package:bookly/features/home/presentation/views/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SuggestedListView extends StatelessWidget {
   const SuggestedListView({super.key});
@@ -18,9 +19,16 @@ class SuggestedListView extends StatelessWidget {
             child: ListView.builder(
               itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return BookImageCard(
-                  imageLink:
-                      state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                return GestureDetector(
+                  onTap: () {
+                    GoRouter.of(
+                      context,
+                    ).push('/bookDetailsView', extra: state.books[index]);
+                  },
+                  child: BookImageCard(
+                    imageLink:
+                        state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                  ),
                 );
               },
               scrollDirection: Axis.horizontal,
