@@ -1,5 +1,5 @@
-import 'package:bookly/features/home/data/models/book_model/book_model.dart';
-import 'package:bookly/features/home/presentation/views/widgets/books_list_view_item.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
+import 'package:bookly/core/widgets/books_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class SearchResultListView extends StatelessWidget {

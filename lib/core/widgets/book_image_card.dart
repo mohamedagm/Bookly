@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+// 'Details + featured + item'
 class BookImageCard extends StatelessWidget {
   const BookImageCard({super.key, required this.imageLink});
   final String imageLink;

@@ -1,10 +1,11 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/home/data/models/book_model/book_model.dart';
-import 'package:bookly/features/home/presentation/views/widgets/books_rating.dart';
-import 'package:bookly/features/home/presentation/views/widgets/book_image_card.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
+import 'package:bookly/features/home/presentation/views/widgets/BookDetailsViewWidgets/books_rating.dart';
+import 'package:bookly/core/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+// 'search + Newest'
 class BooksListViewItem extends StatelessWidget {
   const BooksListViewItem({super.key, required this.bookModel});
   final BookModel bookModel;

@@ -1,4 +1,4 @@
-import 'package:bookly/core/utils/custom_snack_bar.dart';
+import 'package:bookly/core/utils/functions/custom_snack_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> previewBook(context, String url) async {
