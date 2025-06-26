@@ -9,3 +9,9 @@ class SearchView extends StatelessWidget {
     return const Scaffold(body: SearchViewBody());
   }
 }
+
+/* 
+Plan:
+Data layer -> Models,remote,repo
+Presentation -> Views(widgets),Manager(Cubits)
+*/
