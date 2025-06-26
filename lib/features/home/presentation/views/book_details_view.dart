@@ -15,9 +15,10 @@ class BookDetailsView extends StatelessWidget {
     final BookModel bookModel = GoRouterState.of(context).extra as BookModel;
     return BlocProvider(
       create:
-          (context) => SimilarBooksCubit(
-            getIt<HomeRepoImpl>(),
-          )..fetchSimilarBooksC(category: bookModel.volumeInfo!.categories![0]),
+          (context) => SimilarBooksCubit(getIt<HomeRepoImpl>())
+            ..fetchSimilarBooksC(
+              category: bookModel.volumeInfo!.categories?[0] ?? 'unknown',
+            ),
       child: Scaffold(body: BookDetailsViewBody()),
     );
   }

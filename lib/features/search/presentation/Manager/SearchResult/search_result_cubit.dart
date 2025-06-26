@@ -6,10 +6,9 @@ import 'package:equatable/equatable.dart';
 part 'search_result_state.dart';
 
 class SearchResultCubit extends Cubit<SearchResultState> {
-  SearchResultCubit(this.searchRepo, this.query) : super(SearchResultInitial());
+  SearchResultCubit(this.searchRepo) : super(SearchResultInitial());
   final SearchRepo searchRepo;
-  final String query;
-  fetchResultBooksC() async {
+  fetchResultBooksC({required String query}) async {
     emit(SearchResultLoading());
 
     var result = await searchRepo.fetchResultBooks(query: query);
