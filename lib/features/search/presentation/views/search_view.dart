@@ -14,4 +14,10 @@ class SearchView extends StatelessWidget {
 Plan:
 Data layer -> Models,remote,repo
 Presentation -> Views(widgets),Manager(Cubits)
+
+models done before//done
+remote also done before//done
+repo : need new one belong to search
+views I think it need little effort
+Manager : I think i can do it also -> if i can Imagine , I can do
 */
