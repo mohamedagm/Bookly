@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookActions extends StatelessWidget {
-  const BookActions({super.key});
-
+  const BookActions({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,8 +19,6 @@ class BookActions extends StatelessWidget {
         ),
         CustomButton(
           onPressed: () async {
-            final BookModel bookModel =
-                GoRouterState.of(context).extra as BookModel;
             await previewBook(context, bookModel.volumeInfo!.previewLink!);
           },
           text: 'Fast Preview',

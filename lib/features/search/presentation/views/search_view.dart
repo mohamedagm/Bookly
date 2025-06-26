@@ -25,6 +25,6 @@ Presentation -> Views(widgets),Manager(Cubits)
 models done before//done
 remote also done before//done
 repo : need new one belong to search//done
-views I think it need little effort
+views I think it need little effort//done
 Manager : I think i can do it also -> if i can Imagine , I can do//done
 */

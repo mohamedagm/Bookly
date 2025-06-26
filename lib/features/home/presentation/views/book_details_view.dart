@@ -19,7 +19,7 @@ class BookDetailsView extends StatelessWidget {
             ..fetchSimilarBooksC(
               category: bookModel.volumeInfo!.categories?[0] ?? 'unknown',
             ),
-      child: Scaffold(body: BookDetailsViewBody()),
+      child: Scaffold(body: BookDetailsViewBody(bookModel: bookModel)),
     );
   }
 }

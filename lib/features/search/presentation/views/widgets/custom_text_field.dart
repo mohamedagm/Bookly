@@ -2,9 +2,16 @@ import 'package:bookly/features/search/presentation/Manager/SearchResult/search_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomTextField extends StatelessWidget {
-  CustomTextField({super.key});
+class CustomTextField extends StatefulWidget {
+  const CustomTextField({super.key});
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
   TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return TextField(
