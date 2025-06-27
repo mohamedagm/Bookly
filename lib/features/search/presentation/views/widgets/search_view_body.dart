@@ -8,34 +8,28 @@ class SearchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.close, size: 30, color: Colors.white),
-                    ),
-                  ),
-                  CustomTextField(),
-                  SizedBox(height: 16),
-                  Text('Results :', style: Styles.themeStyle),
-                  SizedBox(height: 16),
-                ],
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.close, size: 30, color: Colors.white),
               ),
             ),
-          ),
+            CustomTextField(),
+            SizedBox(height: 16),
+            Text('Results :', style: Styles.themeStyle),
+            SizedBox(height: 16),
+            SearchResultListView(),
+          ],
         ),
-        SliverFillRemaining(child: SearchResultListView()),
-      ],
+      ),
     );
   }
 }
