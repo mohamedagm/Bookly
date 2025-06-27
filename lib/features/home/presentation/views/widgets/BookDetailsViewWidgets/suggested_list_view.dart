@@ -1,5 +1,5 @@
 import 'package:bookly/core/widgets/custom_error.dart';
-import 'package:bookly/core/widgets/custom_loading_indcator.dart';
+import 'package:bookly/core/widgets/horizontal_books_shimmer.dart';
 import 'package:bookly/features/home/presentation/Manager/SimilarBooks/similar_books_cubit.dart';
 import 'package:bookly/core/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class SuggestedListView extends StatelessWidget {
         } else if (state is SimilarBooksFailure) {
           return CustomError(error: state.errMessage);
         } else {
-          return CustomLoadingIndcator();
+          return HorizontalBooksShimmer(heightRatio: 0.16);
         }
       },
     );
