@@ -1,72 +1,64 @@
 import 'package:bookly/core/errors/failures.dart';
-import 'package:bookly/core/models/book_model/book_model.dart';
-import 'package:bookly/core/services/api_service.dart';
-import 'package:bookly/features/home/data/repo/home_repo.dart';
+import 'package:bookly/features/home/data/data_sources/home_local_data_source.dart';
+import 'package:bookly/features/home/data/data_sources/home_remote_data_source.dart';
+import 'package:bookly/features/home/domain/enitities/book_entity.dart';
+import 'package:bookly/features/home/domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 
-class HomeRepoImpl implements HomeRepo {
-  final ApiService apiService;
+class HomeRepoImpl extends HomeRepo {
+  final HomeLocalDataSource homeLocalDataSource;
+  final HomeRemoteDataSource homeRemoteDataSource;
 
-  HomeRepoImpl(this.apiService);
+  HomeRepoImpl({
+    required this.homeLocalDataSource,
+    required this.homeRemoteDataSource,
+  });
   @override
-  Future<Either<Failures, List<BookModel>>> //return newest not best seller ok.
-  fetchNewestBooks() async {
+  Future<Either<Failures, List<BookEntity>>> fetchFeaturedBooks() async {
     try {
-      Map<String, dynamic> data = await apiService.getBooks(
-        endPoint:
-            'volumes?Filtering=free-ebooks&q=computer science&Sorting=newest',
-      );
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+      List<BookEntity> cachedBooks = homeLocalDataSource.fetchFeaturedBooks();
+      if (cachedBooks.isNotEmpty) {
+        return Right(cachedBooks);
       }
-      return right(books);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioEXception(e));
-      }
+      List<BookEntity> books = await homeRemoteDataSource.fetchFeaturedBooks();
+      return Right(books);
+    } on Exception catch (e) {
       return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() async {
+  Future<Either<Failures, List<BookEntity>>> fetchNewestBooks() async {
     try {
-      Map<String, dynamic> data = await apiService.getBooks(
-        endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming',
-      );
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+      List<BookEntity> cachedBooks = homeLocalDataSource.fetchNewestBooks();
+      if (cachedBooks.isNotEmpty) {
+        return Right(cachedBooks);
       }
-      return right(books);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioEXception(e));
-      }
+      List<BookEntity> books = await homeRemoteDataSource.fetchNewestBooks();
+      return Right(books);
+    } on Exception catch (e) {
       return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failures, List<BookModel>>> fetchSimilarBooks({
+  Future<Either<Failures, List<BookEntity>>> fetchSimilarBooks({
     required String category,
   }) async {
     try {
-      Map<String, dynamic> data = await apiService.getBooks(
-        endPoint: 'volumes?Filtering=free-ebooks&q=$category&Sorting=relevance',
+      List<BookEntity> cachedBooks = homeLocalDataSource.fetchSimilarBooks(
+        category: category,
       );
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+      if (cachedBooks.isNotEmpty) {
+        return Right(cachedBooks);
       }
-      return right(books);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioEXception(e));
-      }
+      List<BookEntity> books = await homeRemoteDataSource.fetchSimilarBooks(
+        category: category,
+      );
+      return Right(books);
+    } on Exception catch (e) {
       return left(ServerFailure(e.toString()));
     }
   }
 }
+
