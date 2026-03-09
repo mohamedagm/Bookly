@@ -1,17 +1,16 @@
 import 'package:bloc/bloc.dart';
-import 'package:bookly/features/home/domain/enitities/book_entity.dart';
-import 'package:bookly/features/home/domain/use_cases/fetch_similar_books_use_case.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
+import 'package:bookly/features/home/data/repo/old/home_repo.dart';
 import 'package:equatable/equatable.dart';
 
 part 'similar_books_state.dart';
 
 class SimilarBooksCubit extends Cubit<SimilarBooksState> {
-  SimilarBooksCubit(this.fetchSimilarBooksUseCase)
-    : super(SimilarBooksInitial());
-  final FetchSimilarBooksUseCase fetchSimilarBooksUseCase;
+  SimilarBooksCubit(this.homeRepo) : super(SimilarBooksInitial());
+  final HomeRepo homeRepo;
   fetchSimilarBooksC({required String category}) async {
     emit(SimilarBooksLoading());
-    var result = await fetchSimilarBooksUseCase(category);
+    var result = await homeRepo.fetchSimilarBooks(category: category);
     result.fold(
       (failure) {
         emit(SimilarBooksFailure(failure.errMessage));
