@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/core/models/book_model/book_model.dart';
+import 'package:bookly/features/home/domain/enitities/book_entity.dart';
 import 'package:bookly/features/home/presentation/views/widgets/BookDetailsViewWidgets/books_rating.dart';
 import 'package:bookly/core/widgets/book_image_card.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +7,13 @@ import 'package:go_router/go_router.dart';
 
 // 'search + Newest'
 class BooksListViewItem extends StatelessWidget {
-  const BooksListViewItem({super.key, required this.bookModel});
-  final BookModel bookModel;
+  const BooksListViewItem({super.key, required this.bookEntity});
+  final BookEntity bookEntity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push('/bookDetailsView', extra: bookModel);
+        GoRouter.of(context).push('/bookDetailsView', extra: bookEntity);
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
@@ -21,9 +21,7 @@ class BooksListViewItem extends StatelessWidget {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.14,
-              child: BookImageCard(
-                imageLink: bookModel.volumeInfo!.imageLinks!.thumbnail!,
-              ),
+              child: BookImageCard(imageLink: bookEntity.image ?? ''),
             ),
             SizedBox(width: 30),
             Expanded(
@@ -31,13 +29,13 @@ class BooksListViewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    bookModel.volumeInfo!.title!,
+                    bookEntity.title ?? '',
                     style: Styles.style20,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    bookModel.volumeInfo!.authors?[0] ?? 'Unknown Author',
+                    bookEntity.authors?[0] ?? 'Unknown Author',
                     style: Styles.themeStyle.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -54,8 +52,8 @@ class BooksListViewItem extends StatelessWidget {
                       ),
                       Spacer(),
                       BooksRating(
-                        rating: bookModel.volumeInfo!.averageRating ?? 0,
-                        count: bookModel.volumeInfo!.ratingsCount ?? 0,
+                        rating: bookEntity.averageRating ?? 0,
+                        count: bookEntity.ratingCount ?? 0,
                       ),
                     ],
                   ),

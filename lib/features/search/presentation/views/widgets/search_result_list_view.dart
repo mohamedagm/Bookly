@@ -19,7 +19,7 @@ class SearchResultListView extends StatelessWidget {
               padding: EdgeInsets.zero,
               itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return BooksListViewItem(bookModel: state.books[index]);
+                return BooksListViewItem(bookEntity: state.books[index]);
               },
             ),
           );

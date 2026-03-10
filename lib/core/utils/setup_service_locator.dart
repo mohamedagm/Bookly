@@ -4,6 +4,7 @@ import 'package:bookly/features/home/data/data_sources/home_remote_data_source.d
 import 'package:bookly/features/home/data/repo/home_repo_impl.dart';
 import 'package:bookly/features/home/domain/use_cases/fetch_featured_books_use_case.dart';
 import 'package:bookly/features/home/domain/use_cases/fetch_newest_books_use_case.dart';
+import 'package:bookly/features/home/domain/use_cases/fetch_similar_books_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -29,6 +30,9 @@ class SetupServiceLocator {
     );
     getIt.registerLazySingleton<FetchNewestBooksUseCase>(
       () => FetchNewestBooksUseCase(homeRepo: getIt<HomeRepoImpl>()),
+    );
+    getIt.registerLazySingleton<FetchSimilarBooksUseCase>(
+      () => FetchSimilarBooksUseCase(homeRepo: getIt<HomeRepoImpl>()),
     );
   }
 }

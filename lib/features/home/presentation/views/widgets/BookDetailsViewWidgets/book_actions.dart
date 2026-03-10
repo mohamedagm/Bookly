@@ -1,11 +1,11 @@
 import 'package:bookly/core/utils/functions/custom_url_launcher.dart';
 import 'package:bookly/core/widgets/custom_button.dart';
-import 'package:bookly/core/models/book_model/book_model.dart';
+import 'package:bookly/features/home/domain/enitities/book_entity.dart';
 import 'package:flutter/material.dart';
 
 class BookActions extends StatelessWidget {
-  const BookActions({super.key, required this.bookModel});
-  final BookModel bookModel;
+  const BookActions({super.key, required this.bookEntity});
+  final BookEntity bookEntity;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,7 +18,7 @@ class BookActions extends StatelessWidget {
         ),
         CustomButton(
           onPressed: () async {
-            await previewBook(context, bookModel.volumeInfo!.previewLink!);
+            await previewBook(context, bookEntity.previewLink!);
           },
           text: 'Fast Preview',
           backgroundColor: Color(0xffEF8262),

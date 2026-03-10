@@ -1,7 +1,7 @@
 import 'package:bookly/core/widgets/custom_error.dart';
-import 'package:bookly/features/home/presentation/old/Manager/FeaturedBooks/featured_books_cubit.dart';
 import 'package:bookly/core/widgets/book_image_card.dart';
 import 'package:bookly/core/widgets/horizontal_books_shimmer.dart';
+import 'package:bookly/features/home/presentation/Manager/FeaturedBooks/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +26,7 @@ class FeaturedBooksListView extends StatelessWidget {
                   },
                   child: BookImageCard(
                     imageLink:
-                        state.books[index].volumeInfo!.imageLinks!.thumbnail ??
+                        state.books[index].image ??
                         'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
                   ),
                 );
