@@ -33,6 +33,8 @@ class Bookly extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         // طبعا عملنا كدا عشان دي الهوم فطبيعي تبقي متوفره دايما
+        // هيا مناسبه هنا بس عشان الاب بسيط مفهوش حاجه غير كام اسكرين
+        // لكن لو في اوثنتكيشن و سايفد ايتمز وبروفايل و و و و لا هنا هيبقا كل واحد ع الفيو بتاعه
         BlocProvider(
           create:
               (context) =>

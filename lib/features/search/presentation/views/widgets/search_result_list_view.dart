@@ -26,7 +26,7 @@ class SearchResultListView extends StatelessWidget {
         } else if (state is SearchResultFailure) {
           return CustomError(error: state.errMessage);
         } else if (state is SearchResultLoading) {
-          return VerticalBooksShimmer();
+          return Expanded(child: VerticalBooksShimmer());
         } else {
           return Text('Start search now', style: Styles.style20);
         }
