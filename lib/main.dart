@@ -1,6 +1,7 @@
 import 'package:bookly/core/utils/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/setup_service_locator.dart';
+import 'package:bookly/core/utils/simpe_bloc_observer.dart';
 import 'package:bookly/features/home/domain/enitities/book_entity.dart';
 import 'package:bookly/features/home/domain/use_cases/fetch_featured_books_use_case.dart';
 import 'package:bookly/features/home/domain/use_cases/fetch_newest_books_use_case.dart';
@@ -22,6 +23,7 @@ void main() async {
   await Hive.openBox<BookEntity>(kFeaturedBooks);
   await Hive.openBox<BookEntity>(kNewestBooks);
   await Hive.openBox<BookEntity>(kSimilarBooks);
+  Bloc.observer = MyBlocObserver();
   runApp(const Bookly());
 }
 
