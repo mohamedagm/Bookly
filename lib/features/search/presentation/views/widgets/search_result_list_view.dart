@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/functions/show_dialog.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/core/widgets/books_list_view_item.dart';
 import 'package:bookly/core/widgets/custom_error.dart';
@@ -11,7 +12,12 @@ class SearchResultListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchResultCubit, SearchResultState>(
+    return BlocConsumer<SearchResultCubit, SearchResultState>(
+      listener: (context, state) {
+        if (state is SearchResultFailure) {
+          showStylishDialog(context, state.errMessage);
+        }
+      },
       builder: (context, state) {
         if (state is SearchResultSuccess) {
           return Expanded(

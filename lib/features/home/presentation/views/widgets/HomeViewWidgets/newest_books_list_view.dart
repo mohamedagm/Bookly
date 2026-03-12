@@ -1,4 +1,4 @@
-import 'package:bookly/core/widgets/custom_error.dart';
+import 'package:bookly/core/utils/functions/show_dialog.dart';
 import 'package:bookly/core/widgets/books_list_view_item.dart';
 import 'package:bookly/core/widgets/vertical_books_shimmer.dart';
 import 'package:bookly/features/home/domain/enitities/book_entity.dart';
@@ -27,19 +27,18 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
               books.add(book);
             }
           }
+        } else if (state is NewestBooksFailure) {
+          showStylishDialog(context, state.errMessage);
         }
       },
       builder: (context, state) {
         if (state is NewestBooksSuccess ||
-            state is NewestBooksLoadingPagination) {
+            state is NewestBooksLoadingPagination ||
+            state is NewestBooksFailure) {
           return SliverList(
             delegate: SliverChildBuilderDelegate((context, index) {
               return BooksListViewItem(bookEntity: books[index]);
             }, childCount: books.length),
-          );
-        } else if (state is NewestBooksFailure) {
-          return SliverToBoxAdapter(
-            child: CustomError(error: state.errMessage),
           );
         } else {
           return SliverToBoxAdapter(child: VerticalBooksShimmer());

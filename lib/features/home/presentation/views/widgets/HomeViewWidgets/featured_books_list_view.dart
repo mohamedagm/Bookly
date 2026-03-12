@@ -1,4 +1,4 @@
-import 'package:bookly/core/widgets/custom_error.dart';
+import 'package:bookly/core/utils/functions/show_dialog.dart';
 import 'package:bookly/core/widgets/book_image_card.dart';
 import 'package:bookly/core/widgets/horizontal_books_shimmer.dart';
 import 'package:bookly/features/home/domain/enitities/book_entity.dart';
@@ -54,10 +54,14 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
         if (state is FeaturedBooksSuccess) {
           books.addAll(state.books);
         }
+        if (state is FeaturedBooksFailure) {
+          showStylishDialog(context, state.errMessage);
+        }
       },
       builder: (context, state) {
         if (state is FeaturedBooksSuccess ||
-            state is FeaturedBooksPaginationLoading) {
+            state is FeaturedBooksPaginationLoading ||
+            state is FeaturedBooksFailure) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.26,
             child: ListView.builder(
@@ -81,8 +85,6 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
               physics: BouncingScrollPhysics(),
             ),
           );
-        } else if (state is FeaturedBooksFailure) {
-          return CustomError(error: state.errMessage);
         } else {
           return HorizontalBooksShimmer(heightRatio: 0.26);
         }
