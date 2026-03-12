@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
+bool _isDialogShowing = false;
+
 void showStylishDialog(BuildContext context, String message) {
+  if (_isDialogShowing) return; // ← منع أي dialog تاني يفتح
+  _isDialogShowing = true;
+
   showGeneralDialog(
     context: context,
     barrierDismissible: true,
@@ -85,5 +90,5 @@ void showStylishDialog(BuildContext context, String message) {
         ),
       );
     },
-  );
+  ).whenComplete(() => _isDialogShowing = false); // ← reset لما الدايلوج يقفل
 }
